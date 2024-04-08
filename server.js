@@ -30,9 +30,4 @@ const connectMongoDB = async() => {
 }
 
 connectMongoDB();
-
-
-
-
-
 app.use('/', userRoute);
