@@ -1,7 +1,6 @@
 import { log } from 'console';
 import express, { json } from 'express';
 import userRoute from "./router/user.js";
-import { connect } from 'mongoose';
 import { MongoClient } from 'mongodb';
 import { config } from 'dotenv';
 config();
@@ -11,7 +10,7 @@ const app = express();
 app.use(json());
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const MONGOURI = process.env.MONGOURI;
 const client = new MongoClient(MONGOURI);
 
