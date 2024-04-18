@@ -5,7 +5,11 @@ import { genSalt, hash, compare } from "bcrypt";
 const userSchema = new Schema({
     firstname: {
         type: Schema.Types.String,
-        required: [true, "Please input your Fullname"]
+        required: [true, "Please input your Firstname"]
+    },
+    lastname: {
+        type: Schema.Types.String,
+        required: [true, "Please input your Lastname"]
     },
     email: {
         type: Schema.Types.String,
