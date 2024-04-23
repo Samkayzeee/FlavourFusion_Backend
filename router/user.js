@@ -29,7 +29,7 @@ router.post('/signup', urlencodedparser,  async (req, res) => {
 
         res.status(200).send({message: "Signup Successful", user:user});
     } catch (error) { 
-        res.status(500).send({message:"User not created"});
+        res.status(400).send({message:"User not created"});
         console.log(error);
     }
 

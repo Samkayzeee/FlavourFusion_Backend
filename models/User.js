@@ -33,6 +33,16 @@ const userSchema = new Schema({
 });
 
 
+
+userSchema.pre('save', async function(next){
+    const salt = await genSalt();
+    const hashedPassword = await hash(this.password, salt);
+    this.password = hashedPassword;
+    next();
+});
+
+
+
 userSchema.statics.login = async function (email, password){
     const user = await this.findOne({email});
     
