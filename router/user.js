@@ -27,7 +27,7 @@ router.post('/signup', urlencodedparser,  async (req, res) => {
             password: body.password
         });
 
-        res.status(200).send({message: "Signup Successful", user:user});
+        res.status(200).send({message: "Signup Successful", user});
     } catch (error) { 
         res.status(400).send({message:"User not created"});
         console.log(error);
@@ -41,7 +41,7 @@ router.post('/login', urlencodedparser,  async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.login(email, password);
-        res.status(200).send({message: "Login Successful", user});
+        res.status(200).send({message: "Login Successful", user}); 
     } catch (error) {
         if(!(email) || !(password)){
             res.status(401).send({ message: "Both Email and Password are required correctly" });
