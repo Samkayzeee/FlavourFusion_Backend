@@ -2,7 +2,6 @@ import { Schema, model } from "mongoose";
 import { genSalt, hash, compare } from "bcrypt";
 import  pkg from 'validator';
 
-// const { pkg } =  pkg;
 
 const { isEmail } = pkg;
  

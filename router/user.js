@@ -12,24 +12,23 @@ const urlencodedparser = bodyParser.urlencoded({ extended: true });
 const router = Router();
 
 router.post('/signup', urlencodedparser,  async (req, res) => {
-    const body = req.body;
+    const { firstname, lastname, email, password } = req.body;
 
     try {
-        if (!body) {
-            res.status(400).send({error: "Data are needed"});
+        if (( !firstname || !lastname || !email || !password )) {
+            res.status(400).send({error: "All datas are needed to signup"});
             return;
         }
-
         const user =  await User.create({
-            firstname: body.firstname,
-            lastname: body.lastname,
-            email: body.email,
-            password: body.password
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            password: password
         });
 
-        res.status(200).send({message: "Signup Successful", user});
+        res.status(200).send({ message: "Signup Successful", user });
     } catch (error) { 
-        res.status(400).send({message:"User not created"});
+        res.status(400).send({ message:"User not created" });
         console.log(error);
     }
 
