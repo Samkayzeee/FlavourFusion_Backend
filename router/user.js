@@ -20,10 +20,10 @@ router.post('/signup', urlencodedparser,  async (req, res) => {
             return;
         }
         const user =  await User.create({
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            password: password
+            firstname,
+            lastname,
+            email,
+            password
         });
 
         res.status(200).send({ message: "Signup Successful", user });
