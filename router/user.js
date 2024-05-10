@@ -2,6 +2,7 @@ import { Router } from "express";
 import User from "../models/User.js";
 import bodyParser from "body-parser";
 import pkg from 'jsonwebtoken';
+import handles from "../controllers/authController.js";
 
 const { sign } = pkg;
 
@@ -27,9 +28,9 @@ router.post('/signup', urlencodedparser,  async (req, res) => {
         });
 
         res.status(200).send({ message: "Signup Successful", user });
-    } catch (error) { 
+    } catch (error) {
+        handles.handleErrors(error);
         res.status(400).send({ message:"User not created" });
-        console.log(error);
     }
 
 });

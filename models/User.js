@@ -18,13 +18,13 @@ const userSchema = new Schema({
     },
     email: {
         type: Schema.Types.String,
-        required: [true, "Please input your email"],
+        required: [true, "Please enter an email"],
         unique: true,
         validate: [isEmail, 'Please enter a valid email']
     },
     password: {
         type: Schema.Types.String,
-        required: [true, "Please input password"]
+        required: [true, "Please input  a password"]
     }
 },
 
